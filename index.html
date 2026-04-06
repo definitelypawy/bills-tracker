@@ -34,7 +34,7 @@
       :root {
         --bg: #1e1e1c;
         --bg-secondary: #2a2a28;
-        --bg-tertiary: #242422;
+        --bg-tertiary: #181816;
         --text: #f0efe8;
         --text-secondary: #a0a09a;
         --text-tertiary: #6b6b67;
@@ -59,17 +59,29 @@
       padding: 2rem 1rem;
     }
 
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-    }
+    .container { max-width: 720px; margin: 0 auto; }
 
-    h1 {
-      font-size: 22px;
-      font-weight: 500;
-      color: var(--text);
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 1.5rem;
     }
+
+    h1 { font-size: 22px; font-weight: 500; color: var(--text); }
+
+    .logout-btn {
+      background: none;
+      border: 0.5px solid var(--border-md);
+      border-radius: var(--radius-md);
+      padding: 6px 14px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-family: var(--font);
+      cursor: pointer;
+    }
+
+    .logout-btn:hover { background: var(--bg-secondary); color: var(--text); }
 
     .header {
       display: flex;
@@ -80,11 +92,7 @@
       gap: 12px;
     }
 
-    .month-nav {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .month-nav { display: flex; align-items: center; gap: 12px; }
 
     .month-label {
       font-size: 18px;
@@ -117,15 +125,10 @@
       margin-bottom: 1.5rem;
     }
 
-    .stat {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-md);
-      padding: 12px 14px;
-    }
-
+    .stat { background: var(--bg-secondary); border-radius: var(--radius-md); padding: 12px 14px; }
     .stat-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
     .stat-value { font-size: 22px; font-weight: 500; color: var(--text); }
-    .stat-value.paid { color: var(--green-text); }
+    .stat-value.paid  { color: var(--green-text); }
     .stat-value.unpaid { color: var(--red-text); }
 
     .card {
@@ -149,12 +152,7 @@
       background: var(--bg-secondary);
     }
 
-    td {
-      padding: 10px 14px;
-      border-bottom: 0.5px solid var(--border);
-      vertical-align: middle;
-    }
-
+    td { padding: 10px 14px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
     tr:last-child td { border-bottom: none; }
     tbody tr:hover td { background: var(--bg-secondary); }
 
@@ -199,7 +197,6 @@
     }
 
     .toggle-wrap { display: flex; align-items: center; gap: 8px; }
-
     .toggle { position: relative; width: 40px; height: 22px; cursor: pointer; }
     .toggle input { opacity: 0; width: 0; height: 0; }
 
@@ -214,10 +211,8 @@
     .slider:before {
       content: '';
       position: absolute;
-      width: 16px;
-      height: 16px;
-      left: 3px;
-      top: 3px;
+      width: 16px; height: 16px;
+      left: 3px; top: 3px;
       background: white;
       border-radius: 50%;
       transition: transform 0.2s;
@@ -231,8 +226,6 @@
     .paid-label.no  { color: var(--text-tertiary); }
 
     @media (max-width: 540px) {
-      .summary-cards { grid-template-columns: repeat(3, 1fr); }
-      table { font-size: 13px; }
       th, td { padding: 8px 10px; }
       .due-input { width: 130px; }
     }
@@ -240,7 +233,10 @@
 </head>
 <body>
   <div class="container">
-    <h1>Bills Payment Tracker</h1>
+    <div class="top-bar">
+      <h1>Bills Payment Tracker</h1>
+      <button class="logout-btn" onclick="logout()">Sign out</button>
+    </div>
 
     <div class="header">
       <div class="month-nav">
@@ -280,18 +276,29 @@
   </div>
 
   <script>
+    // ── Auth guard ────────────────────────────────────────────────────────
+    if (sessionStorage.getItem('bt_auth') !== 'true') {
+      window.location.href = 'login.html';
+    }
+
+    function logout() {
+      sessionStorage.removeItem('bt_auth');
+      window.location.href = 'login.html';
+    }
+    // ─────────────────────────────────────────────────────────────────────
+
     const BILLS = [
-      { id: 'rent',       name: 'Rent',                   cat: 'housing' },
-      { id: 'insurance',  name: 'Insurance',              cat: 'utility' },
-      { id: 'internet',   name: 'Internet',               cat: 'utility' },
-      { id: 'electricity',name: 'Electricity',            cat: 'utility' },
-      { id: 'phone',      name: 'Phone Bill',             cat: 'utility' },
-      { id: 'water',      name: 'Water Bill',             cat: 'utility' },
-      { id: 'ub_cc',      name: 'UB Credit Card',         cat: 'credit'  },
-      { id: 'maya_cc',    name: 'Maya Credit Card',       cat: 'credit'  },
-      { id: 'bpi_cc',     name: 'BPI Credit Card',        cat: 'credit'  },
-      { id: 'rcbc_gold',  name: 'RCBC Gold Credit Card',  cat: 'credit'  },
-      { id: 'rcbc_black', name: 'RCBC Black Credit Card', cat: 'credit'  },
+      { id: 'rent',        name: 'Rent',                   cat: 'housing', defaultDay: 15   },
+      { id: 'insurance',   name: 'Insurance',              cat: 'utility', defaultDay: 'last' },
+      { id: 'internet',    name: 'Internet',               cat: 'utility', defaultDay: 20   },
+      { id: 'electricity', name: 'Electricity',            cat: 'utility', defaultDay: 15   },
+      { id: 'phone',       name: 'Phone Bill',             cat: 'utility', defaultDay: 13   },
+      { id: 'water',       name: 'Water Bill',             cat: 'utility', defaultDay: 1    },
+      { id: 'ub_cc',       name: 'UB Credit Card',         cat: 'credit',  defaultDay: 30   },
+      { id: 'maya_cc',     name: 'Maya Credit Card',       cat: 'credit',  defaultDay: 30   },
+      { id: 'bpi_cc',      name: 'BPI Credit Card',        cat: 'credit',  defaultDay: 30   },
+      { id: 'rcbc_gold',   name: 'RCBC Gold Credit Card',  cat: 'credit',  defaultDay: 15   },
+      { id: 'rcbc_black',  name: 'RCBC Black Credit Card', cat: 'credit',  defaultDay: 15   },
     ];
 
     const CAT_LABELS = { housing: 'Housing', utility: 'Utility', credit: 'Credit Card' };
@@ -303,13 +310,18 @@
 
     function pad(n) { return String(n).padStart(2, '0'); }
 
-    function storageKey(billId, y, m) {
-      return `bill_${billId}_${y}_${m}`;
+    function storageKey(billId, y, m) { return `bill_${billId}_${y}_${m}`; }
+
+    function getDefaultDue(bill, y, m) {
+      const lastDay = new Date(y, m + 1, 0).getDate();
+      const day = bill.defaultDay === 'last' ? lastDay : Math.min(bill.defaultDay, lastDay);
+      return `${y}-${pad(m + 1)}-${pad(day)}`;
     }
 
-    function loadState(billId) {
+    function loadState(billId, bill) {
       const raw = localStorage.getItem(storageKey(billId, currentYear, currentMonth));
-      return raw ? JSON.parse(raw) : { due: '', paid: false };
+      if (raw) return JSON.parse(raw);
+      return { due: getDefaultDue(bill, currentYear, currentMonth), paid: false };
     }
 
     function saveState(billId, state) {
@@ -319,8 +331,7 @@
     const states = {};
 
     function getMinMax() {
-      const y = currentYear;
-      const m = pad(currentMonth + 1);
+      const y = currentYear, m = pad(currentMonth + 1);
       const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
       return { min: `${y}-${m}-01`, max: `${y}-${m}-${pad(lastDay)}` };
     }
@@ -330,7 +341,7 @@
                       'July','August','September','October','November','December'];
       document.getElementById('monthLabel').textContent = `${MONTHS[currentMonth]} ${currentYear}`;
 
-      for (const bill of BILLS) states[bill.id] = loadState(bill.id);
+      for (const bill of BILLS) states[bill.id] = loadState(bill.id, bill);
 
       const tbody = document.getElementById('billsBody');
       tbody.innerHTML = '';
