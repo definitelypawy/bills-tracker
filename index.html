@@ -51,193 +51,116 @@
       }
     }
 
-    body {
-      font-family: var(--font);
-      background: var(--bg-tertiary);
-      color: var(--text);
-      min-height: 100vh;
-      padding: 2rem 1rem;
-    }
+    body { font-family: var(--font); background: var(--bg-tertiary); color: var(--text); min-height: 100vh; padding: 2rem 1rem; }
+    .container { max-width: 760px; margin: 0 auto; }
 
-    .container { max-width: 720px; margin: 0 auto; }
-
-    .top-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-    }
-
+    .top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; gap: 12px; flex-wrap: wrap; }
     h1 { font-size: 22px; font-weight: 500; color: var(--text); }
 
-    .logout-btn {
-      background: none;
-      border: 0.5px solid var(--border-md);
-      border-radius: var(--radius-md);
-      padding: 6px 14px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      font-family: var(--font);
-      cursor: pointer;
-    }
+    .tab-nav { display: flex; gap: 4px; background: var(--bg-secondary); border-radius: var(--radius-md); padding: 4px; margin-bottom: 1.5rem; width: fit-content; }
+    .tab-btn { background: none; border: none; border-radius: 6px; padding: 6px 18px; font-size: 13px; font-weight: 500; color: var(--text-secondary); font-family: var(--font); cursor: pointer; transition: all 0.15s; }
+    .tab-btn.active { background: var(--bg); color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .tab-btn:hover:not(.active) { color: var(--text); }
 
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .logout-btn { background: none; border: 0.5px solid var(--border-md); border-radius: var(--radius-md); padding: 6px 14px; font-size: 13px; color: var(--text-secondary); font-family: var(--font); cursor: pointer; }
     .logout-btn:hover { background: var(--bg-secondary); color: var(--text); }
 
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
+    .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 12px; }
     .month-nav { display: flex; align-items: center; gap: 12px; }
-
-    .month-label {
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--text);
-      min-width: 160px;
-      text-align: center;
-    }
-
-    .nav-btn {
-      background: var(--bg);
-      border: 0.5px solid var(--border-md);
-      border-radius: var(--radius-md);
-      width: 32px;
-      height: 32px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text);
-      font-size: 16px;
-    }
-
+    .month-label { font-size: 18px; font-weight: 500; color: var(--text); min-width: 160px; text-align: center; }
+    .nav-btn { background: var(--bg); border: 0.5px solid var(--border-md); border-radius: var(--radius-md); width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); font-size: 16px; }
     .nav-btn:hover { background: var(--bg-secondary); }
 
-    .summary-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 1.5rem;
-    }
-
+    .summary-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.5rem; }
     .stat { background: var(--bg-secondary); border-radius: var(--radius-md); padding: 12px 14px; }
     .stat-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
     .stat-value { font-size: 22px; font-weight: 500; color: var(--text); }
-    .stat-value.paid  { color: var(--green-text); }
+    .stat-value.paid   { color: var(--green-text); }
     .stat-value.unpaid { color: var(--red-text); }
 
-    .card {
-      background: var(--bg);
-      border-radius: var(--radius-lg);
-      border: 0.5px solid var(--border);
-      overflow: hidden;
-    }
-
+    .card { background: var(--bg); border-radius: var(--radius-lg); border: 0.5px solid var(--border); overflow: hidden; margin-bottom: 1rem; }
     table { width: 100%; border-collapse: collapse; font-size: 14px; }
-
-    th {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-align: left;
-      padding: 10px 14px;
-      border-bottom: 0.5px solid var(--border);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      background: var(--bg-secondary);
-    }
-
+    th { font-size: 11px; font-weight: 500; color: var(--text-secondary); text-align: left; padding: 10px 14px; border-bottom: 0.5px solid var(--border); text-transform: uppercase; letter-spacing: 0.05em; background: var(--bg-secondary); }
     td { padding: 10px 14px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
     tr:last-child td { border-bottom: none; }
     tbody tr:hover td { background: var(--bg-secondary); }
 
     .bill-name { font-weight: 500; color: var(--text); font-size: 14px; }
-
-    .category-badge {
-      display: inline-block;
-      font-size: 10px;
-      padding: 2px 7px;
-      border-radius: 20px;
-      font-weight: 500;
-      margin-top: 3px;
-    }
-
+    .category-badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 20px; font-weight: 500; margin-top: 3px; }
     .cat-utility { background: var(--green-bg); color: var(--green-text); }
     .cat-credit  { background: var(--blue-bg);  color: var(--blue-text);  }
     .cat-housing { background: var(--amber-bg); color: var(--amber-text); }
 
-    .due-input {
-      background: var(--bg-secondary);
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 5px 8px;
-      font-size: 13px;
-      color: var(--text);
-      width: 150px;
-      font-family: var(--font);
-      cursor: pointer;
-    }
-
+    .due-input { background: var(--bg-secondary); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 5px 8px; font-size: 13px; color: var(--text); width: 150px; font-family: var(--font); cursor: pointer; }
     .due-input:focus { outline: none; border-color: var(--border-md); }
 
-    .overdue-badge {
-      display: inline-block;
-      font-size: 10px;
-      padding: 2px 7px;
-      border-radius: 20px;
-      font-weight: 500;
-      background: var(--red-bg);
-      color: var(--red-text);
-      margin-top: 4px;
-    }
+    .overdue-badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 20px; font-weight: 500; background: var(--red-bg); color: var(--red-text); margin-top: 4px; }
 
     .toggle-wrap { display: flex; align-items: center; gap: 8px; }
     .toggle { position: relative; width: 40px; height: 22px; cursor: pointer; }
     .toggle input { opacity: 0; width: 0; height: 0; }
-
-    .slider {
-      position: absolute;
-      inset: 0;
-      background: var(--border-md);
-      border-radius: 22px;
-      transition: background 0.2s;
-    }
-
-    .slider:before {
-      content: '';
-      position: absolute;
-      width: 16px; height: 16px;
-      left: 3px; top: 3px;
-      background: white;
-      border-radius: 50%;
-      transition: transform 0.2s;
-    }
-
+    .slider { position: absolute; inset: 0; background: var(--border-md); border-radius: 22px; transition: background 0.2s; }
+    .slider:before { content: ''; position: absolute; width: 16px; height: 16px; left: 3px; top: 3px; background: white; border-radius: 50%; transition: transform 0.2s; }
     input:checked + .slider { background: var(--green-toggle); }
     input:checked + .slider:before { transform: translateX(18px); }
-
     .paid-label { font-size: 12px; font-weight: 500; }
     .paid-label.yes { color: var(--green-text); }
     .paid-label.no  { color: var(--text-tertiary); }
 
+    /* Dashboard */
+    .dash-filters { display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .filter-select { background: var(--bg); border: 0.5px solid var(--border-md); border-radius: var(--radius-md); padding: 7px 12px; font-size: 13px; color: var(--text); font-family: var(--font); cursor: pointer; }
+    .filter-select:focus { outline: none; }
+
+    .dash-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+    .dash-stat { background: var(--bg-secondary); border-radius: var(--radius-md); padding: 14px 16px; }
+    .dash-stat-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+    .dash-stat-value { font-size: 28px; font-weight: 500; }
+    .dash-stat-value.red   { color: var(--red-text); }
+    .dash-stat-value.green { color: var(--green-text); }
+    .dash-stat-sub { font-size: 12px; color: var(--text-tertiary); margin-top: 2px; }
+
+    .section-title { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; margin-top: 1.5rem; }
+
+    .dash-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .dash-table th { font-size: 11px; font-weight: 500; color: var(--text-secondary); text-align: left; padding: 8px 14px; border-bottom: 0.5px solid var(--border); background: var(--bg-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+    .dash-table td { padding: 9px 14px; border-bottom: 0.5px solid var(--border); }
+    .dash-table tr:last-child td { border-bottom: none; }
+    .dash-table tbody tr:hover td { background: var(--bg-secondary); }
+
+    .pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+    .pill.all-paid  { background: var(--green-bg); color: var(--green-text); }
+    .pill.partial   { background: var(--amber-bg); color: var(--amber-text); }
+    .pill.none-paid { background: var(--red-bg);   color: var(--red-text);   }
+
+    .progress-bar-bg   { background: var(--border); border-radius: 4px; height: 6px; width: 100%; margin-top: 8px; }
+    .progress-bar-fill { height: 6px; border-radius: 4px; background: var(--green-toggle); transition: width 0.4s; }
+
     @media (max-width: 540px) {
       th, td { padding: 8px 10px; }
       .due-input { width: 130px; }
+      .dash-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="top-bar">
-      <h1>Bills Payment Tracker</h1>
-      <button class="logout-btn" onclick="logout()">Sign out</button>
-    </div>
+<div class="container">
 
+  <div class="top-bar">
+    <h1>Bills Tracker</h1>
+    <button class="logout-btn" onclick="logout()">Sign out</button>
+  </div>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" id="tab-tracker"   onclick="switchTab('tracker',   this)">Monthly Tracker</button>
+    <button class="tab-btn"        id="tab-dashboard" onclick="switchTab('dashboard', this)">Dashboard</button>
+  </div>
+
+  <!-- ══════ TRACKER ══════ -->
+  <div class="page active" id="page-tracker">
     <div class="header">
       <div class="month-nav">
         <button class="nav-btn" onclick="changeMonth(-1)">&#8592;</button>
@@ -249,7 +172,7 @@
     <div class="summary-cards">
       <div class="stat">
         <div class="stat-label">Total bills</div>
-        <div class="stat-value" id="totalCount">11</div>
+        <div class="stat-value" id="totalCount">12</div>
       </div>
       <div class="stat">
         <div class="stat-label">Paid</div>
@@ -257,158 +180,261 @@
       </div>
       <div class="stat">
         <div class="stat-label">Unpaid</div>
-        <div class="stat-value unpaid" id="unpaidCount">11</div>
+        <div class="stat-value unpaid" id="unpaidCount">12</div>
       </div>
     </div>
 
     <div class="card">
       <table>
-        <thead>
-          <tr>
-            <th>Bill</th>
-            <th>Due date</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Bill</th><th>Due date</th><th>Status</th></tr></thead>
         <tbody id="billsBody"></tbody>
       </table>
     </div>
   </div>
 
-  <script>
-    // ── Auth guard ────────────────────────────────────────────────────────
-    if (sessionStorage.getItem('bt_auth') !== 'true') {
-      window.location.href = 'login.html';
+  <!-- ══════ DASHBOARD ══════ -->
+  <div class="page" id="page-dashboard">
+    <div class="dash-filters">
+      <select class="filter-select" id="dashYear"   onchange="renderDashboard()"></select>
+      <select class="filter-select" id="dashPeriod" onchange="renderDashboard()">
+        <option value="year">Full Year</option>
+        <option value="q1">Q1 — Jan to Mar</option>
+        <option value="q2">Q2 — Apr to Jun</option>
+        <option value="q3">Q3 — Jul to Sep</option>
+        <option value="q4">Q4 — Oct to Dec</option>
+      </select>
+    </div>
+
+    <div class="dash-grid">
+      <div class="dash-stat">
+        <div class="dash-stat-label">Unpaid bills</div>
+        <div class="dash-stat-value red" id="dashUnpaid">—</div>
+        <div class="dash-stat-sub"       id="dashUnpaidSub"></div>
+      </div>
+      <div class="dash-stat">
+        <div class="dash-stat-label">Paid bills</div>
+        <div class="dash-stat-value green" id="dashPaid">—</div>
+        <div class="dash-stat-sub"         id="dashPaidSub"></div>
+      </div>
+      <div class="dash-stat">
+        <div class="dash-stat-label">Total expected</div>
+        <div class="dash-stat-value" id="dashTotal">—</div>
+        <div class="dash-stat-sub"   id="dashTotalSub"></div>
+      </div>
+      <div class="dash-stat">
+        <div class="dash-stat-label">Completion rate</div>
+        <div class="dash-stat-value" id="dashRate">—</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="dashBar" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <div class="section-title">Month-by-month breakdown</div>
+    <div class="card">
+      <table class="dash-table">
+        <thead><tr><th>Month</th><th>Paid</th><th>Unpaid</th><th>Status</th></tr></thead>
+        <tbody id="dashBreakdown"></tbody>
+      </table>
+    </div>
+
+    <div class="section-title">Unpaid bill details</div>
+    <div class="card">
+      <table class="dash-table">
+        <thead><tr><th>Bill</th><th>Month</th><th>Due date</th></tr></thead>
+        <tbody id="dashUnpaidList"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+<script>
+  // Auth
+  if (sessionStorage.getItem('bt_auth') !== 'true') window.location.href = 'login.html';
+  function logout() { sessionStorage.removeItem('bt_auth'); window.location.href = 'login.html'; }
+
+  // Config
+  const BILLS = [
+    { id: 'rent',           name: 'Rent',                   cat: 'housing', defaultDay: 15     },
+    { id: 'insurance',      name: 'Insurance',              cat: 'utility', defaultDay: 'last' },
+    { id: 'internet',       name: 'Internet',               cat: 'utility', defaultDay: 20     },
+    { id: 'internet_condo', name: 'Internet - Condo',       cat: 'utility', defaultDay: 15     },
+    { id: 'electricity',    name: 'Electricity',            cat: 'utility', defaultDay: 15     },
+    { id: 'phone',          name: 'Phone Bill',             cat: 'utility', defaultDay: 13     },
+    { id: 'water',          name: 'Water Bill',             cat: 'utility', defaultDay: 1      },
+    { id: 'ub_cc',          name: 'UB Credit Card',         cat: 'credit',  defaultDay: 30     },
+    { id: 'maya_cc',        name: 'Maya Credit Card',       cat: 'credit',  defaultDay: 30     },
+    { id: 'bpi_cc',         name: 'BPI Credit Card',        cat: 'credit',  defaultDay: 30     },
+    { id: 'rcbc_gold',      name: 'RCBC Gold Credit Card',  cat: 'credit',  defaultDay: 15     },
+    { id: 'rcbc_black',     name: 'RCBC Black Credit Card', cat: 'credit',  defaultDay: 15     },
+  ];
+
+  const CAT_LABELS   = { housing: 'Housing', utility: 'Utility', credit: 'Credit Card' };
+  const CAT_CLASS    = { housing: 'cat-housing', utility: 'cat-utility', credit: 'cat-credit' };
+  const MONTHS       = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const QUARTER_MONTHS = { year:[0,1,2,3,4,5,6,7,8,9,10,11], q1:[0,1,2], q2:[3,4,5], q3:[6,7,8], q4:[9,10,11] };
+
+  const today = new Date();
+  let currentYear  = today.getFullYear();
+  let currentMonth = today.getMonth();
+
+  function pad(n) { return String(n).padStart(2,'0'); }
+  function storageKey(id,y,m) { return `bill_${id}_${y}_${m}`; }
+
+  function getDefaultDue(bill,y,m) {
+    const lastDay = new Date(y,m+1,0).getDate();
+    const day = bill.defaultDay==='last' ? lastDay : Math.min(bill.defaultDay,lastDay);
+    return `${y}-${pad(m+1)}-${pad(day)}`;
+  }
+
+  function loadState(bill,y,m) {
+    const raw = localStorage.getItem(storageKey(bill.id,y,m));
+    if (raw) return JSON.parse(raw);
+    return { due: getDefaultDue(bill,y,m), paid: false };
+  }
+
+  function saveState(id,state,y,m) {
+    localStorage.setItem(storageKey(id,y,m), JSON.stringify(state));
+  }
+
+  // Tabs
+  function switchTab(name, btn) {
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('page-'+name).classList.add('active');
+    btn.classList.add('active');
+    if (name==='dashboard') renderDashboard();
+  }
+
+  // Tracker
+  const states = {};
+
+  function render() {
+    document.getElementById('monthLabel').textContent = `${MONTHS[currentMonth]} ${currentYear}`;
+    for (const bill of BILLS) states[bill.id] = loadState(bill,currentYear,currentMonth);
+
+    const tbody = document.getElementById('billsBody');
+    tbody.innerHTML = '';
+    const lastDay = new Date(currentYear,currentMonth+1,0).getDate();
+    const minDate = `${currentYear}-${pad(currentMonth+1)}-01`;
+    const maxDate = `${currentYear}-${pad(currentMonth+1)}-${pad(lastDay)}`;
+    const todayStr = `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+    const isCurrent = today.getFullYear()===currentYear && today.getMonth()===currentMonth;
+    let paid = 0;
+
+    for (const bill of BILLS) {
+      const s = states[bill.id];
+      if (s.paid) paid++;
+      const overdue = !s.paid && s.due && isCurrent && s.due < todayStr;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>
+          <div class="bill-name">${bill.name}</div>
+          <span class="category-badge ${CAT_CLASS[bill.cat]}">${CAT_LABELS[bill.cat]}</span>
+        </td>
+        <td>
+          <input class="due-input" type="date" min="${minDate}" max="${maxDate}" value="${s.due}"
+            onchange="updateDue('${bill.id}',this.value)" />
+          ${overdue ? '<div class="overdue-badge">Overdue</div>' : ''}
+        </td>
+        <td>
+          <div class="toggle-wrap">
+            <label class="toggle">
+              <input type="checkbox" ${s.paid?'checked':''} onchange="togglePaid('${bill.id}',this.checked)" />
+              <span class="slider"></span>
+            </label>
+            <span class="paid-label ${s.paid?'yes':'no'}">${s.paid?'Paid':'Unpaid'}</span>
+          </div>
+        </td>`;
+      tbody.appendChild(tr);
     }
+    document.getElementById('totalCount').textContent  = BILLS.length;
+    document.getElementById('paidCount').textContent   = paid;
+    document.getElementById('unpaidCount').textContent = BILLS.length - paid;
+  }
 
-    function logout() {
-      sessionStorage.removeItem('bt_auth');
-      window.location.href = 'login.html';
+  function updateDue(id,val) { states[id].due=val; saveState(id,states[id],currentYear,currentMonth); render(); }
+  function togglePaid(id,checked) { states[id].paid=checked; saveState(id,states[id],currentYear,currentMonth); render(); }
+  function changeMonth(dir) {
+    currentMonth+=dir;
+    if (currentMonth<0)  { currentMonth=11; currentYear--; }
+    if (currentMonth>11) { currentMonth=0;  currentYear++; }
+    render();
+  }
+
+  // Dashboard
+  function initDashFilters() {
+    const sel = document.getElementById('dashYear');
+    for (let y=today.getFullYear(); y>=today.getFullYear()-4; y--) {
+      const o = document.createElement('option');
+      o.value=y; o.textContent=y; sel.appendChild(o);
     }
-    // ─────────────────────────────────────────────────────────────────────
+  }
 
-    const BILLS = [
-      { id: 'rent',        name: 'Rent',                   cat: 'housing', defaultDay: 15   },
-      { id: 'insurance',   name: 'Insurance',              cat: 'utility', defaultDay: 'last' },
-      { id: 'internet',    name: 'Internet',               cat: 'utility', defaultDay: 20   },
-      { id: 'electricity', name: 'Electricity',            cat: 'utility', defaultDay: 15   },
-      { id: 'phone',       name: 'Phone Bill',             cat: 'utility', defaultDay: 13   },
-      { id: 'water',       name: 'Water Bill',             cat: 'utility', defaultDay: 1    },
-      { id: 'ub_cc',       name: 'UB Credit Card',         cat: 'credit',  defaultDay: 30   },
-      { id: 'maya_cc',     name: 'Maya Credit Card',       cat: 'credit',  defaultDay: 30   },
-      { id: 'bpi_cc',      name: 'BPI Credit Card',        cat: 'credit',  defaultDay: 30   },
-      { id: 'rcbc_gold',   name: 'RCBC Gold Credit Card',  cat: 'credit',  defaultDay: 15   },
-      { id: 'rcbc_black',  name: 'RCBC Black Credit Card', cat: 'credit',  defaultDay: 15   },
-    ];
+  function renderDashboard() {
+    const year   = parseInt(document.getElementById('dashYear').value);
+    const period = document.getElementById('dashPeriod').value;
+    const months = QUARTER_MONTHS[period];
 
-    const CAT_LABELS = { housing: 'Housing', utility: 'Utility', credit: 'Credit Card' };
-    const CAT_CLASS   = { housing: 'cat-housing', utility: 'cat-utility', credit: 'cat-credit' };
+    let totalPaid=0, totalUnpaid=0, totalBills=0;
+    const unpaidDetails=[], breakdown=[];
 
-    const today = new Date();
-    let currentYear  = today.getFullYear();
-    let currentMonth = today.getMonth();
-
-    function pad(n) { return String(n).padStart(2, '0'); }
-
-    function storageKey(billId, y, m) { return `bill_${billId}_${y}_${m}`; }
-
-    function getDefaultDue(bill, y, m) {
-      const lastDay = new Date(y, m + 1, 0).getDate();
-      const day = bill.defaultDay === 'last' ? lastDay : Math.min(bill.defaultDay, lastDay);
-      return `${y}-${pad(m + 1)}-${pad(day)}`;
-    }
-
-    function loadState(billId, bill) {
-      const raw = localStorage.getItem(storageKey(billId, currentYear, currentMonth));
-      if (raw) return JSON.parse(raw);
-      return { due: getDefaultDue(bill, currentYear, currentMonth), paid: false };
-    }
-
-    function saveState(billId, state) {
-      localStorage.setItem(storageKey(billId, currentYear, currentMonth), JSON.stringify(state));
-    }
-
-    const states = {};
-
-    function getMinMax() {
-      const y = currentYear, m = pad(currentMonth + 1);
-      const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
-      return { min: `${y}-${m}-01`, max: `${y}-${m}-${pad(lastDay)}` };
-    }
-
-    function render() {
-      const MONTHS = ['January','February','March','April','May','June',
-                      'July','August','September','October','November','December'];
-      document.getElementById('monthLabel').textContent = `${MONTHS[currentMonth]} ${currentYear}`;
-
-      for (const bill of BILLS) states[bill.id] = loadState(bill.id, bill);
-
-      const tbody = document.getElementById('billsBody');
-      tbody.innerHTML = '';
-
-      const { min, max } = getMinMax();
-      const todayStr = `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
-      const isCurrentMonth = today.getFullYear() === currentYear && today.getMonth() === currentMonth;
-
-      let paidCount = 0;
-
+    for (const m of months) {
+      let mPaid=0, mUnpaid=0;
       for (const bill of BILLS) {
-        const state = states[bill.id];
-        if (state.paid) paidCount++;
+        const s = loadState(bill,year,m);
+        totalBills++;
+        if (s.paid) { mPaid++; totalPaid++; }
+        else { mUnpaid++; totalUnpaid++; unpaidDetails.push({name:bill.name, month:MONTHS_SHORT[m], due:s.due}); }
+      }
+      breakdown.push({month:MONTHS[m], paid:mPaid, unpaid:mUnpaid, total:BILLS.length});
+    }
 
-        const isOverdue = !state.paid && state.due && isCurrentMonth && state.due < todayStr;
+    const rate = totalBills ? Math.round((totalPaid/totalBills)*100) : 0;
+    document.getElementById('dashUnpaid').textContent    = totalUnpaid;
+    document.getElementById('dashUnpaidSub').textContent = `out of ${totalBills} total`;
+    document.getElementById('dashPaid').textContent      = totalPaid;
+    document.getElementById('dashPaidSub').textContent   = `out of ${totalBills} total`;
+    document.getElementById('dashTotal').textContent     = totalBills;
+    document.getElementById('dashTotalSub').textContent  = `across ${months.length} month${months.length>1?'s':''}`;
+    document.getElementById('dashRate').textContent      = rate + '%';
+    document.getElementById('dashBar').style.width       = rate + '%';
 
+    // Breakdown
+    const tb = document.getElementById('dashBreakdown');
+    tb.innerHTML = '';
+    for (const row of breakdown) {
+      let pc, pt;
+      if (row.unpaid===0)    { pc='all-paid';  pt='All paid'; }
+      else if (row.paid===0) { pc='none-paid'; pt='None paid'; }
+      else                   { pc='partial';   pt=`${row.paid}/${row.total} paid`; }
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="font-weight:500">${row.month}</td>
+        <td style="color:var(--green-text)">${row.paid}</td>
+        <td style="color:${row.unpaid>0?'var(--red-text)':'var(--text-tertiary)'}">${row.unpaid>0?row.unpaid:'—'}</td>
+        <td><span class="pill ${pc}">${pt}</span></td>`;
+      tb.appendChild(tr);
+    }
+
+    // Unpaid list
+    const ul = document.getElementById('dashUnpaidList');
+    ul.innerHTML = '';
+    if (!unpaidDetails.length) {
+      ul.innerHTML = `<tr><td colspan="3" style="text-align:center;color:var(--green-text);padding:18px;font-size:13px;">🎉 All bills paid for this period!</td></tr>`;
+    } else {
+      for (const row of unpaidDetails) {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td>
-            <div class="bill-name">${bill.name}</div>
-            <span class="category-badge ${CAT_CLASS[bill.cat]}">${CAT_LABELS[bill.cat]}</span>
-          </td>
-          <td>
-            <input class="due-input" type="date" min="${min}" max="${max}" value="${state.due}"
-              onchange="updateDue('${bill.id}', this.value)" />
-            ${isOverdue ? '<div class="overdue-badge">Overdue</div>' : ''}
-          </td>
-          <td>
-            <div class="toggle-wrap">
-              <label class="toggle">
-                <input type="checkbox" ${state.paid ? 'checked' : ''}
-                  onchange="togglePaid('${bill.id}', this.checked)" />
-                <span class="slider"></span>
-              </label>
-              <span class="paid-label ${state.paid ? 'yes' : 'no'}">
-                ${state.paid ? 'Paid' : 'Unpaid'}
-              </span>
-            </div>
-          </td>
-        `;
-        tbody.appendChild(tr);
+          <td style="font-weight:500">${row.name}</td>
+          <td>${row.month}</td>
+          <td style="color:var(--text-secondary)">${row.due||'—'}</td>`;
+        ul.appendChild(tr);
       }
-
-      document.getElementById('paidCount').textContent   = paidCount;
-      document.getElementById('unpaidCount').textContent = BILLS.length - paidCount;
     }
+  }
 
-    function updateDue(billId, value) {
-      states[billId].due = value;
-      saveState(billId, states[billId]);
-      render();
-    }
-
-    function togglePaid(billId, checked) {
-      states[billId].paid = checked;
-      saveState(billId, states[billId]);
-      render();
-    }
-
-    function changeMonth(dir) {
-      currentMonth += dir;
-      if (currentMonth < 0)  { currentMonth = 11; currentYear--; }
-      if (currentMonth > 11) { currentMonth = 0;  currentYear++; }
-      render();
-    }
-
-    render();
-  </script>
+  initDashFilters();
+  render();
+</script>
 </body>
 </html>
